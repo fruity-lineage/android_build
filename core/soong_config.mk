@@ -68,6 +68,8 @@ $(call add_json_str,  DeviceArchVariant,                 $(TARGET_ARCH_VARIANT))
 $(call add_json_str,  DeviceCpuVariant,                  $(TARGET_CPU_VARIANT))
 $(call add_json_list, DeviceAbi,                         $(TARGET_CPU_ABI) $(TARGET_CPU_ABI2))
 
+$(call add_json_bool, Device_has_arm_mte,                $(filter true,$(TARGET_HAS_ARM_MTE)))
+
 $(call add_json_str,  DeviceSecondaryArch,               $(TARGET_2ND_ARCH))
 $(call add_json_str,  DeviceSecondaryArchVariant,        $(TARGET_2ND_ARCH_VARIANT))
 $(call add_json_str,  DeviceSecondaryCpuVariant,         $(TARGET_2ND_CPU_VARIANT))
@@ -163,6 +165,7 @@ $(call add_json_list, ExtraVndkVersions,                 $(PRODUCT_EXTRA_VNDK_VE
 $(call add_json_list, DeviceSystemSdkVersions,           $(BOARD_SYSTEMSDK_VERSIONS))
 $(call add_json_list, Platform_systemsdk_versions,       $(PLATFORM_SYSTEMSDK_VERSIONS))
 $(call add_json_bool, Malloc_low_memory,                 $(findstring true,$(MALLOC_SVELTE) $(MALLOC_LOW_MEMORY)))
+$(call add_json_bool, Use_hardened_malloc,               $(filter true,$(TARGET_USE_HARDENED_MALLOC)))
 $(call add_json_bool, Malloc_scudo_tsds_max,             $(MALLOC_SCUDO_TSDS_MAX))
 $(call add_json_bool, Malloc_zero_contents,              $(call invert_bool,$(filter false,$(MALLOC_ZERO_CONTENTS))))
 $(call add_json_bool, Malloc_pattern_fill_contents,      $(MALLOC_PATTERN_FILL_CONTENTS))
